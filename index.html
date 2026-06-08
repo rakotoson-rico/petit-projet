@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image</title>
+    <link rel="stylesheet" href="acceuil.css">
+    <link rel="stylesheet" href="video.css">
+    <!-- HO RAISINY REHETRA  -->
+    <style>
+        /* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f9f3e6 0%, #ffe6e6 100%);
+    color: #2d2d2d;
+    line-height: 1.6;
+}
+
+/* ========== NAVIGATION ========== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b6b, #ffb347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffb347;
+}
+
+.navbtn button {
+    background: linear-gradient(45deg, #ff6b6b, #ffb347);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navbtn button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* ========== HERO SECTION ========== */
+.hello {
+    text-align: center;
+    padding: 120px 20px 60px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    margin-bottom: 60px;
+}
+
+.hello h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff6b6b, #ffb347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hello p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b6b, #ffb347);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
+}
+
+/* ========== BOX 3D CARROUSEL ========== */
+.box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 80px auto;
+    transform-style: preserve-3d;
+    animation: rotateBox 20s linear infinite;
+}
+
+.box span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(350px);
+}
+
+.box span img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.box span img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes rotateBox {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+/* ========== GRILLE PRODUITS ========== */
+.grille {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.titre h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.titre h2::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #ffb347);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: #f0f0f0;
+    /* placeholder visuel tant que src est vide */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ccc"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+}
+
+.description {
+    padding: 1.5rem;
+}
+
+.description h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ff6b6b;
+}
+
+.description p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.prix {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b6b, #ffb347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* ========== SECTION TUTO VIDÉOS ========== */
+.tuto {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.titre-tuto h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.titre-tuto h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #ffb347);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.videos video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+    background: #000;
+}
+
+.videos video:hover {
+    transform: scale(1.02);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    nav ul {
+        justify-content: center;
+        gap: 1rem;
+    }
+    .hello h1 {
+        font-size: 2rem;
+    }
+    .box {
+        width: 200px;
+        height: 200px;
+    }
+    .box span {
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(200px);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 2% !important;
+    }
+    .navbtn button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .grille {
+        grid-template-columns: 1fr;
+    }
+    .videos {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">B'ART</div>
+        <ul>
+            <li><a href="">Acceuil</a></li>
+            <li><a href="">Galerie</a></li>
+            <li><a href="">Historique</a></li>
+            <li><a href="">Contact</a></li>
+
+            <li class="navbtn"><button>s'inscrire </button></li>
+            <li class="navbtn"><button>se connecter </button></li>
+
+        </ul>
+    </nav>
+    <div class="hello">
+        <h1>Bonjour et Bienvenue </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, sapiente voluptatibus quos consectetur
+
+        </p>
+        <a href="" class="btn">voir les modeles</a>
+    </div>
+    <div class="box">
+        <span style="--i:1"><img src="TWB/0cf796847bd62175d5ee4ff43c8b3fc2.jpg" alt=""></span>
+        <span style="--i:2"><img src="TWB/1310b9caaedfc25206d7a73bf05954b0.webp.jpg" alt=""></span>
+        <span style="--i:3"><img src="TWB/622cb10961d111b41890d284ecb637d5.jpg" alt=""></span>
+        <span style="--i:4"><img src="TWB/635230b0c067103339f3a3726f5e774b.jpg" alt=""></span>
+        <span style="--i:5"><img src="TWB/7fb6da73897a852f2b541f09e4dd33da.jpg" alt=""></span>
+        <span style="--i:6"><img src="TWB/8d6b63a38c17e26db8c4392d8b54962d.webp.jpg" alt=""></span>
+        <span style="--i:7"><img src="TWB/bbc7280ec57e4747d29ba99446fbfdfc.jpg" alt=""></span>
+        <span style="--i:8"><img src="TWB/e3f77951692b60d1b70c5ba0bc7a4e1f.jpg" alt=""></span>
+    </div>
+
+    <div class="grille">
+        <div class="titre">
+            <h2>Nos modèle disponible</h2>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="" alt="produit">
+            <div class="description">
+                <h3>AKATSUKI</h3>
+                <P>Un bracelet qui simbolise l'union dans un group d'amies surtout pour les OTAKU fan de Naruto</P>
+                <span class="prix">5000A R</span>
+            </div>
+        </div>
+    </div>
+    <div class="tuto">
+        <div class="titre-tuto">
+            <h2>Petit tuto</h2>
+        </div>
+        <div class="videos">
+            <!-- asina controlss @zay mandeh fa tsy miraikitra  -->
+            <video controls src="video/Dene panosundaki Pin _ Takı(MP4).mp4" type="video/mp4"></video>
+            <video controls
+                src="video/Easy craft decor ideas _ String friendship bracelets tutorial_ How to make alpha bracelets tutorial_ Pola gelang(MP4).mp4"
+                type="video/mp4"></video>
+            <video controls src="video/Easy Knitting Ideas for Beginners_ Free Patterns(MP4).mp4"
+                type="video/mp4"></video>
+            <video controls src="video/Simple Knitting Inspiration for Beginners(MP4).mp4" type="video/mp4"></video>
+            <video controls src="video/Örgü Bileklik _ Braid Friendship Bracelet(MP4).mp4" type="video/mp4"></video>
+        </div>
+    </div>
+
+</body>
+
+</html>
