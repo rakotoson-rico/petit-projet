@@ -1,0 +1,19 @@
+Algorithmedeviner_un_nombre
+	variable nombre_secret,tentative : entier
+Début
+	nombre_secret<-50
+	Ecrire("Tenter vôtre chance:")
+	Lire(tentative)
+	nombre_tentative <-0
+	Si tentative < 50 Alors
+		Ecire("trop petit")
+		nombre_tentative = nombre_tentative +1
+	
+	sinon si tentetive = 0 Alors 
+		Ecrire("bravo")
+		nmbre_tentative 
+	
+	Sinon si tentative >0 Alors
+		Ecrire("trop grand")
+	FinSi
+Fin
